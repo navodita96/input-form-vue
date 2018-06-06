@@ -1,0 +1,52 @@
+ I also import Bulma to take advantage of some pre-made styles:
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Forms in Vue.js</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.4/css/bulma.min.css">
+</head>
+
+<body>
+  <div class="columns" id="app">
+    <div class="column is-two-thirds">
+      <section class="section">
+        <h1 class="title">Forms in Vue</h1>
+        <hr>      
+        
+        <!-- form starts here -->
+        
+        <section class="form">
+          <div class="field">
+      <label class="label">Message</label>
+      <div class="control">
+        <textarea name="message" class="textarea" placeholder="Message" v-model="form.message" v-validate="'required|min:3'"></textarea>
+        <p class="help is-danger" v-show="errors.has('message')">
+          {{ errors.first('message') }}
+        </p>
+      </div>
+    </div>
+        </section>
+      </section>
+    </div>
+    <div class="column">
+      <section class="section" id="results">
+        <div class="box">
+          <ul>          
+            <!-- loop through all the `form` properties and show their values -->
+            <li v-for="(item, k) in form">
+              <strong>{{ k }}:</strong> {{ item }}
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script src="https://unpkg.com/vee-validate@2.0.0-rc.18/dist/vee-validate.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
